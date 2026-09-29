@@ -77,6 +77,22 @@ export default function EaasDashboard() {
               EaaS Enterprise Operations & Logistics
             </h1>
             <p className="text-sm text-gray-400 mt-1">Cloudflare Workers + D1 Backend Connected Hub</p>
+            <div className="flex gap-4 mt-6 mb-2">
+  <a 
+    href="/calculator" 
+    className="bg-[#004A99] hover:bg-blue-800 text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md transition-all flex items-center gap-2 border border-[#004A99]"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+    Project Finance Estimator
+  </a>
+  <a 
+    href="/planner" 
+    className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md transition-all flex items-center gap-2 border border-slate-700"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+    Capacity Planner
+  </a>
+</div>
           </div>
           <div className="flex items-center space-x-3 bg-gray-900 border border-gray-800 p-2 rounded-lg">
             <span className="text-xs text-gray-400 font-medium">API Key:</span>
