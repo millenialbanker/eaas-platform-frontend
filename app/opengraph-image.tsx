@@ -13,7 +13,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: '#0F172A',
+          background: '#FFFFFF',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -21,16 +21,17 @@ export default async function Image() {
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: 'sans-serif',
+          border: '12px solid #0F172A',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-          <div style={{ width: '48px', height: '16px', background: '#3B82F6', borderRadius: '4px' }} />
-          <div style={{ width: '96px', height: '16px', background: '#059669', borderRadius: '4px' }} />
+          <div style={{ width: '56px', height: '18px', background: '#3B82F6', borderRadius: '4px' }} />
+          <div style={{ width: '110px', height: '18px', background: '#059669', borderRadius: '4px' }} />
         </div>
-        <div style={{ color: 'white', fontSize: '64px', fontWeight: '800', letterSpacing: '-0.025em' }}>
+        <div style={{ color: '#0F172A', fontSize: '64px', fontWeight: '800', letterSpacing: '-0.025em' }}>
           Modulease
         </div>
-        <div style={{ color: '#94A3B8', fontSize: '26px', marginTop: '12px', fontWeight: '500' }}>
+        <div style={{ color: '#475569', fontSize: '26px', marginTop: '12px', fontWeight: '600' }}>
           Zero-Waste Infrastructure & EaaS Portal
         </div>
       </div>
