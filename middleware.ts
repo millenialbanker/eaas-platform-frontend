@@ -2,23 +2,22 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  const basicAuth = req.headers.get('authorization')
-  
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1]
-    const [user, pwd] = atob(authValue).split(':')
+  const cookie = req.cookies.get('modulease_auth')
+  const { pathname } = req.url ? new URL(req.url) : { pathname: req.nextUrl.pathname }
 
-    if (user === 'modulease' && pwd === 'vip2026') {
-      return NextResponse.next()
-    }
+  // Allow access to login page and api routes
+  if (pathname.startsWith('/login') || pathname.startsWith('/api/')) {
+    return NextResponse.next()
   }
 
-  return new NextResponse('Authentication required to access Modulease engines.', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="Secure Modulease Portal"',
-    },
-  })
+  // If authenticated via cookie, let them through
+  if (cookie && cookie.value === 'authenticated') {
+    return NextResponse.next()
+  }
+
+  // Otherwise, redirect to the custom login portal
+  const loginUrl = new URL('/login', req.url)
+  return NextResponse.redirect(loginUrl)
 }
 
 export const config = {
