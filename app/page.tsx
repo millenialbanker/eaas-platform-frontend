@@ -33,8 +33,14 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Zero-Waste Infrastructure & <span className="text-[#059669]">Capital Financing</span>
           </h1>
-          <p className="text-lg text-slate-600 mt-4 leading-relaxed">
-            Equipping managed workspace operators with enterprise-grade capacity planning and tax-optimized Equipment-as-a-Service (EaaS) structures.
+          <p className="text-lg md:text-xl font-medium mt-4 leading-relaxed">
+            <span className="text-[#0F172A]">Scale Your Workspace</span>
+            <span className="text-[#3B82F6]">.</span>{" "}
+            <span className="text-[#059669]">Protect your Capital</span>
+            <span className="text-[#3B82F6]">.</span>
+          </p>
+          <p className="text-sm text-slate-500 mt-2">
+            Equipping managed workspace operators with enterprise-grade capacity planning and tax-optimized Equipment-as-a-Service solutions.
           </p>
         </div>
 
