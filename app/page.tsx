@@ -1,4 +1,6 @@
-'import { useState } from "react";
+'use client';
+
+import { useState } from "react";
 
 export default function EaasDashboard() {
   const [apiKey, setApiKey] = useState("sk_op_alice123");
