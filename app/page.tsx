@@ -31,7 +31,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-12">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Zero-Waste Infrastructure & <span className="text-[#059669]">Capital Financing</span>
+            Zero-Waste Infrastructure & <span className="text-[#059669]">Equipment Solutions</span>
           </h1>
           <p className="text-lg md:text-xl font-medium mt-4 leading-relaxed">
             <span className="text-[#0F172A]">Scale Your Workspace</span>
