@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     // 1. DATABASE CAPTURE (Console log / Database hook)
     console.log(`[LEAD CAPTURED] New EaaS Portal Access Request: ${email}`);
 
-    // 2. SEND EMAIL VIA NATIVE FETCH TO RESEND API
+    // 2. SEND EMAIL VIA RESEND API (Using verified custom domain)
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -37,6 +37,20 @@ export async function POST(req: Request) {
         `,
       }),
     });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      console.error('Resend API Error:', data);
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, data }, { status: 200 });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
 
     const data = await res.json();
 
