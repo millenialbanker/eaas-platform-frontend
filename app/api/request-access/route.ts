@@ -51,17 +51,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.error('Resend API Error:', data);
-      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
-    }
-
-    return NextResponse.json({ success: true, data }, { status: 200 });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  }
-}
