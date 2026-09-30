@@ -8,10 +8,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Valid email required' }, { status: 400 });
     }
 
-    // 1. DATABASE CAPTURE (Console log / Database hook)
-    console.log(`[LEAD CAPTURED] New EaaS Portal Access Request: ${email}`);
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json({ error: 'Server configuration error: Missing RESEND_API_KEY' }, { status: 500 });
+    }
 
-    // 2. SEND EMAIL VIA RESEND API (Using verified custom domain)
+    // 1. PUSH LEAD TO SUPERCHARGED CRM GOOGLE SHEET
+    if (process.env.GOOGLE_SHEET_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.GOOGLE_SHEET_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+      } catch (sheetErr) {
+        console.error('CRM Google Sheet Error:', sheetErr);
+      }
+    }
+
+    // 2. SEND CREDENTIAL EMAIL VIA RESEND API
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -42,12 +56,12 @@ export async function POST(req: Request) {
 
     if (!res.ok) {
       console.error('Resend API Error:', data);
-      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+      return NextResponse.json({ error: data.message || 'Failed to send email' }, { status: 500 });
     }
 
     return NextResponse.json({ success: true, data }, { status: 200 });
-  } catch (err) {
+  } catch (err: any) {
     console.error(err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500 });
   }
 }
